@@ -39,9 +39,11 @@ public class ProdutosDAO {
 
             prep.executeUpdate();
             
+            JOptionPane.showMessageDialog(null, "Dados Salvos com sucesso!");
+            
         } catch (SQLException ex) 
             {
-                JOptionPane.showMessageDialog(null, "Erro: "+ex);
+                JOptionPane.showMessageDialog(null, "Ocorreu um erro! tente novamente mais tarde.");
             }
         
         
