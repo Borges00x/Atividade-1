@@ -29,6 +29,7 @@ public class ProdutosDAO {
         
         conn = new conectaDAO().connectDB();
         
+        
         try 
         {
             
@@ -49,9 +50,38 @@ public class ProdutosDAO {
         
     }
     
-    public ArrayList<ProdutosDTO> listarProdutos(){
+    public ArrayList<ProdutosDTO> listarProdutos(String id){
         
-        return listagem;
+        try {
+            conn = new conectaDAO().connectDB();
+            
+            prep = conn.prepareStatement("select * from produtos Where id LIKE ?");
+            
+            prep.setString(1, "%" +id+ "%");
+            
+            resultset = prep.executeQuery();
+            
+            while(resultset.next()) 
+            {
+                ProdutosDTO produto = new ProdutosDTO();
+                
+                produto.setId(resultset.getInt("id"));
+                produto.setNome(resultset.getString("nome"));
+                produto.setValor(resultset.getInt("valor"));
+                produto.setStatus(resultset.getString("status"));
+                
+                listagem.add(produto);
+            }
+                return listagem;
+                
+        } catch (SQLException ex) 
+            {
+                JOptionPane.showMessageDialog(null, "Erro:"+ex);
+                
+                return null;
+            }
+        
+        
     }
     
     

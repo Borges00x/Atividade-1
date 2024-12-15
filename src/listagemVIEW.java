@@ -1,6 +1,9 @@
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+import java.lang.NumberFormatException;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -13,9 +16,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class listagemVIEW extends javax.swing.JFrame {
 
-    /**
-     * Creates new form listagemVIEW
-     */
     public listagemVIEW() {
         initComponents();
         listarProdutos();
@@ -41,7 +41,7 @@ public class listagemVIEW extends javax.swing.JFrame {
         btnVendas = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         listaProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -205,10 +205,15 @@ public class listagemVIEW extends javax.swing.JFrame {
         try {
             ProdutosDAO produtosdao = new ProdutosDAO();
             
+            String id = id_produto_venda.getText();
+            
             DefaultTableModel model = (DefaultTableModel) listaProdutos.getModel();
+            
             model.setNumRows(0);
             
-            ArrayList<ProdutosDTO> listagem = produtosdao.listarProdutos();
+            ArrayList<ProdutosDTO> listagem = produtosdao.listarProdutos(id);
+            
+            listaProdutos.setRowSorter(new TableRowSorter(model));
             
             for(int i = 0; i < listagem.size(); i++){
                 model.addRow(new Object[]{
@@ -218,8 +223,12 @@ public class listagemVIEW extends javax.swing.JFrame {
                     listagem.get(i).getStatus()
                 });
             }
-        } catch (Exception e) {
-        }
+        } catch (NumberFormatException e) {
+        
+                JOptionPane.showMessageDialog(null, "Erro ao vender o produto!"+e);
+                System.out.println("erro "+e);
+            
+            }
     
     }
 }
