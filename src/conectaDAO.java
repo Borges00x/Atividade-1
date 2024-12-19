@@ -4,17 +4,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-
-
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author Adm
- */
 public class conectaDAO {
     
     public Connection connectDB(){
@@ -26,8 +15,7 @@ public class conectaDAO {
             return conn;
            } catch(ClassNotFoundException | SQLException ex) 
            {
-               JOptionPane.showMessageDialog(null, "Ocorreu um erro : "+ ex.getMessage());
-               System.out.println("Ocorreu um erro : "+ ex.getMessage());
+               JOptionPane.showMessageDialog(null, "Não foi possível se conectar ao Banco de Dados! Por favor tente mais tarde!");
                return null;
            }
     }
