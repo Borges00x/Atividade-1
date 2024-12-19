@@ -101,6 +101,39 @@ public class ProdutosDAO {
                 JOptionPane.showMessageDialog(null, "Erro ao vender o produto! por favor tente mais tarde! ");
             }
     }
+       
+           public ArrayList<ProdutosDTO> listarProdutosVendidos() 
+    {
+        try {
+        conn = new conectaDAO().connectDB();
+        
+        prep = conn.prepareStatement("select * from produtos where status LIKE ? ");
+        
+        prep.setString(1, "vendido");
+        
+        resultset = prep.executeQuery();
+        
+        while(resultset.next()) 
+            {
+                ProdutosDTO produto = new ProdutosDTO();
+                
+                produto.setId(resultset.getInt("id"));
+                produto.setNome(resultset.getString("nome"));
+                produto.setValor(resultset.getInt("valor"));
+                produto.setStatus(resultset.getString("status"));
+                
+                listagem.add(produto);
+            }
+        
+                    return listagem;
+        
+        } catch (SQLException erro) 
+            {
+                JOptionPane.showMessageDialog(null, "Erro ao exibir os dados! por favor tente mais tarde!");
+                
+                return null;
+            }
+    }
     
         
 }
