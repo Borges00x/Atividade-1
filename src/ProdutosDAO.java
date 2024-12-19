@@ -34,7 +34,7 @@ public class ProdutosDAO {
             
         } catch (SQLException ex) 
             {
-                JOptionPane.showMessageDialog(null, "Ocorreu um erro! tente novamente mais tarde.");
+                JOptionPane.showMessageDialog(null, "Ocorreu um erro! Por favor tente novamente mais tarde.");
             }
         
         
@@ -66,7 +66,7 @@ public class ProdutosDAO {
                 
         } catch (SQLException ex) 
             {
-                JOptionPane.showMessageDialog(null, "Erro:"+ex);
+                JOptionPane.showMessageDialog(null, "Não foi possível exibir os dados! Por favor tente mais tarde!");
                 
                 return null;
             }
@@ -88,7 +88,7 @@ public class ProdutosDAO {
         
         } catch (SQLException erro) 
             {
-                JOptionPane.showMessageDialog(null, "Erro ao vender o produto! por favor tente mais tarde! ");
+                JOptionPane.showMessageDialog(null, "Erro ao vender o produto! Por favor tente mais tarde! ");
             }
     }
        
@@ -119,7 +119,7 @@ public class ProdutosDAO {
         
         } catch (SQLException erro) 
             {
-                JOptionPane.showMessageDialog(null, "Erro ao exibir os dados! por favor tente mais tarde!");
+                JOptionPane.showMessageDialog(null, "Erro ao exibir os dados! Por favor tente mais tarde!");
                 
                 return null;
             }

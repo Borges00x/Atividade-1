@@ -214,8 +214,7 @@ public class listagemVIEW extends javax.swing.JFrame {
             }
         } catch (NumberFormatException e) {
         
-                JOptionPane.showMessageDialog(null, "Erro ao vender o produto!"+e);
-                System.out.println("erro "+e);
+                JOptionPane.showMessageDialog(null, "Erro ao vender o produto! Por favor tente mais tarde!");
             
             }
     

@@ -142,7 +142,7 @@ public class vendasVIEW extends javax.swing.JFrame {
             }
         } catch (NumberFormatException e) {
         
-                JOptionPane.showMessageDialog(null, "Erro ao vender o produto!");
+                JOptionPane.showMessageDialog(null, "Erro ao vender o produto! Por favor tente mais tarde!");
             
             }
     

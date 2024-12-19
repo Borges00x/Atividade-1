@@ -15,8 +15,7 @@ public class conectaDAO {
             return conn;
            } catch(ClassNotFoundException | SQLException ex) 
            {
-               JOptionPane.showMessageDialog(null, "Ocorreu um erro : "+ ex.getMessage());
-               System.out.println("Ocorreu um erro : "+ ex.getMessage());
+               JOptionPane.showMessageDialog(null, "Não foi possível se conectar ao Banco de Dados! Por favor tente mais tarde!");
                return null;
            }
     }
