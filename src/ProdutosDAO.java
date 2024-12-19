@@ -35,7 +35,7 @@ public class ProdutosDAO {
             
         } catch (SQLException ex) 
             {
-                JOptionPane.showMessageDialog(null, "Ocorreu um erro! tente novamente mais tarde.");
+                JOptionPane.showMessageDialog(null, "Erro ao inserir os dados! por favor tente novamente mais tarde!");
             }
         
         
@@ -67,7 +67,7 @@ public class ProdutosDAO {
                 
         } catch (SQLException ex) 
             {
-                JOptionPane.showMessageDialog(null, "Erro:"+ex);
+                JOptionPane.showMessageDialog(null, "Erro ao exibir os dados! por favor tente mais tarde! ");
                 
                 return null;
             }
@@ -82,14 +82,14 @@ public class ProdutosDAO {
             
         prep = conn.prepareStatement("update produtos set status = ? where id = ?");
             
-        prep.setString(1, "%" +"vendido"+ "%");
-        prep.setString(2, "%" +id+ "%");
+        prep.setString(1, "Vendido");
+        prep.setInt(2, id);
         
         prep.executeUpdate();
         
         } catch (SQLException erro) 
             {
-                JOptionPane.showMessageDialog(null, "Erro: "+erro);
+                JOptionPane.showMessageDialog(null, "Erro ao vender o produto! por favor tente mais tarde! ");
             }
     }
     
@@ -120,7 +120,7 @@ public class ProdutosDAO {
         
         } catch (SQLException erro) 
             {
-                JOptionPane.showMessageDialog(null, "Erro: "+erro);
+                JOptionPane.showMessageDialog(null, "Erro ao exibir os dados! por favor tente mais tarde!");
                 
                 return null;
             }
